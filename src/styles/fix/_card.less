@@ -1,0 +1,41 @@
+.ant-card {
+  background: rgba(0, 0, 0, 0.1);
+
+  &.ant-card-charts {
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+
+  &.ant-card-bordered {
+    border: 1px solid;
+    // border-image: -webkit-linear-gradient(top, red 20%, blue 40%, green 60%, black 80%) 100 100 100 100;
+    border-image: -webkit-linear-gradient(top left, #000 20%, #123b75 40%, #000 60%, #123b75 80%) 1 1 1 1;
+    // border-image: linear-gradient(45deg, #123b75 12%, #2b86f3 0, #2b86f3 88%, #123b75 0);
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 1);
+  }
+
+  .ant-card-head-title {
+    color: #28ffff;
+    font-size: 12px;
+    line-height: 1;
+
+    &:before, &:after {
+      content: '';
+      width: 17px;
+      height: 12px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &:before {
+      background-image: url("/assets/images/fix/title-left.png");
+      margin-right: 5px;
+    }
+
+    &:after {
+      background-image: url("/assets/images/fix/title-right.png");
+      margin-left: 5px;
+    }
+  }
+}

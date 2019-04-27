@@ -1,0 +1,195 @@
+@import "../../../styles/theme";
+
+.passenger {
+  height: 198px;
+}
+
+.map, .dashboard {
+  position: absolute;
+  left: 256px;
+  right: 0;
+  top: 64px;
+  bottom: 0;
+  &.collapsed {
+    left: 80px;
+  }
+}
+
+.dashboard {
+  padding: 24px 24px 0;
+}
+
+table {
+  font-size: 12px;
+  width: 100%;
+  border-collapse: collapse;
+  color: #9fc1f5;
+
+  thead {
+    th {
+      background: #1b5ebd;
+      text-align: center;
+      border: 1px solid #051025;
+      color: #fff;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.map-container {
+  height: 532px;
+}
+
+.alarm-container {
+  height: 254px;
+}
+
+.place-container {
+  height: 300px;
+}
+
+.analysis-container {
+  position: relative;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-size: 12px;
+
+  .left-container {
+    position: absolute;
+    right: 50%;
+    width: 50%;
+    background: #1365cb;
+  }
+
+  .right-container {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+  }
+}
+
+.circle {
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border-width: 13px;
+  border-style: solid;
+  box-sizing: border-box;
+  margin: 15px auto 10px;
+  text-align: center;
+  line-height: 44px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+.circle-label {
+  margin: 5px 0 10px 0;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  color: #c7ddfc;
+}
+
+nz-card {
+  ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
+
+  ul {
+    margin: 15px 10px;
+
+    li {
+      line-height: 24px;
+    }
+  }
+
+  &::ng-deep {
+    .ant-card-head {
+      border-bottom: 0;
+      padding: 10px;
+      min-height: unset;
+
+      .ant-card-head-title {
+        padding: 0;
+      }
+    }
+  }
+
+  &.table, &.snap {
+    &::ng-deep {
+      .ant-card-body {
+        padding: 0 10px 10px;
+      }
+    }
+  }
+
+  .sub-card {
+    .title {
+      color: #b3d1fc;
+      font-size: 12px;
+      line-height: 1;
+      padding: 10px 0 8px 0;
+      overflow: hidden;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 19px;
+        height: 11px;
+        display: inline-block;
+        vertical-align: middle;
+        background-image: url("/assets/images/fix/sub-title-left.png");
+        margin-right: 5px;
+      }
+
+      &:after {
+        content: '';
+        background-image: url("/assets/images/fix/sub-title-line.png");
+        position: absolute;
+        width: 95%;
+        height: 12px;
+        left: 2px;
+        bottom: 0;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.statistic {
+  margin: 15px;
+  line-height: 1;
+  text-align: left;
+  .label {
+    display: inline-block;
+    font-size: 14px;
+  }
+  .value {
+    font-size: 24px;
+    display: inline-block;
+  }
+  &.total {
+    .value {
+      color: #fef239;
+    }
+  }
+  &.today {
+    .value {
+      color: #ff4239;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+:host ::ng-deep {
+  position: relative;
+  .align-items-center {
+    color: transparent;
+  }
+}
+.data {
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 200px;
+}
+.notification {
+  color: #fff;
+  white-space: nowrap;
+  &.check {
+    color: green;
+  }
+  &.close {
+    color: red;
+  }
+  i {
+    margin-right: 8px;
+  }
+}

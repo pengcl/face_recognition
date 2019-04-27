@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "http://39.108.183.138/gzga-spiap",
+    "secure": false,
+    "pathRewrite": {
+      "^/api/": ""
+    },
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

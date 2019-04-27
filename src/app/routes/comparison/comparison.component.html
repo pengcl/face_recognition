@@ -1,0 +1,83 @@
+<page-header-wrapper [title]="'人员检索'">
+  <div nz-row [nzGutter]="24">
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+      <nz-card nzTitle="比对信息">
+        <div nz-row [nzGutter]="24">
+          <div #imgContainer nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+            <div class="input-img">
+              <nz-upload
+                class="avatar-uploader"
+                nzAction="https://jsonplaceholder.typicode.com/posts/"
+                nzName="avatar"
+                nzListType="picture-card"
+                [nzShowUploadList]="false"
+                [nzBeforeUpload]="beforeUpload"
+                (nzChange)="handleChange($event)">
+                <ng-container *ngIf="!avatarUrl">
+                  <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+                  <div class="ant-upload-text">上传</div>
+                </ng-container>
+                <img style="width: 100%;height: 100%;" *ngIf="avatarUrl" [src]="avatarUrl" class="avatar"/>
+              </nz-upload>
+              <div class="scan_line" [ngClass]="{'scan_start':state === 'start'}"></div>
+            </div>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+            <div class="result-img">
+              <img style="width: 100%;height: 100%;" *ngIf="target_img" [src]="target_img" class="avatar"/>
+            </div>
+          </div>
+          <div class="action" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+            <button [disabled]="!avatarUrl" (click)="start()" nz-button>开始比对</button>
+          </div>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+      <nz-card style="min-height: 453px" class="fadeInRight animated" nzTitle="匹配信息">
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+            <ul *ngIf="state === 'hit'" class="candidate">
+              <li>
+                <div class="candidate-img">
+                  <img style="width: 100%;height: 100%;" [src]="target_img" class="avatar"/>
+                </div>
+              </li>
+              <li *ngFor="let img of target_imgs.slice(0,2)">
+                <div class="candidate-img">
+                  <img style="width: 100%;height: 100%;" [src]="img" class="avatar"/>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div *ngIf="state === 'hit'" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+            <ul class="details">
+              <li>姓名：虎虎</li>
+              <li>姓别：女</li>
+              <li>证件类型：身份证</li>
+              <li>目标库：涉黄库</li>
+              <li>备注：虎虎</li>
+            </ul>
+          </div>
+        </div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+      <nz-card class="track fadeInUp animated" *ngIf="state === 'hit'" nzTitle="活动轨迹" [nzExtra]="extraTemplate">
+        <div nz-row [nzGutter]="16">
+          <div *ngFor="let item of [1,2,3,4,5,6]" nz-col nzXs="12" nzSm="8" nzMd="6" nzLg="4">
+            <nz-card nzHoverable [nzCover]="coverTemplate">
+              <nz-card-meta nzTitle="抓拍场所：白云金汇大酒店" nzDescription="www.instagram.com"></nz-card-meta>
+            </nz-card>
+            <ng-template #coverTemplate>
+              <img alt="example" src="/assets/tmp/compairson/wKgA1ly9oamAJDyQAABDdEMn-bw973.jpg"/>
+            </ng-template>
+          </div>
+        </div>
+      </nz-card>
+      <ng-template #extraTemplate>
+        <a (click)="showGallery()">更多</a>
+      </ng-template>
+    </div>
+  </div>
+</page-header-wrapper>

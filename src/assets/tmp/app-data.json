@@ -1,0 +1,135 @@
+{
+  "app": {
+    "name": "特行场所图像智能应用平台",
+    "description": "特行场所图像智能应用平台"
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "3559996@qq.com"
+  },
+  "menu": [
+    {
+      "text": "主导航",
+      "i18n": "menu.main",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "监控告警",
+          "i18n": "menu.alarm",
+          "icon": "anticon anticon-alarm",
+          "children": [
+            {
+              "text": "实时监控",
+              "i18n": "menu.alarm.monitor",
+              "link": "/alarm/monitor"
+            },
+            {
+              "text": "告警列表",
+              "i18n": "menu.alarm.list",
+              "link": "/alarm/list"
+            },
+            {
+              "text": "告警目标库",
+              "i18n": "menu.database.alarm",
+              "link": "/alarm/database"
+            }
+          ]
+        },
+        {
+          "text": "数据管理",
+          "i18n": "menu.database",
+          "icon": "anticon anticon-database",
+          "children": [
+            {
+              "text": "登记入住人员库",
+              "i18n": "menu.database.checkin",
+              "link": "/database/checkin"
+            },
+            {
+              "text": "从业人员库",
+              "i18n": "menu.database.practitioner",
+              "link": "/database/practitioner"
+            },
+            {
+              "text": "原始抓拍图库",
+              "i18n": "menu.database.snap",
+              "link": "/database/snap"
+            },
+            {
+              "text": "无登记人员库",
+              "i18n": "menu.database.uncheck",
+              "link": "/database/uncheck"
+            },
+            {
+              "text": "夜间无登记人员库",
+              "i18n": "menu.database.night",
+              "link": "/database/night"
+            }
+          ]
+        },
+        {
+          "text": "警情研判",
+          "i18n": "menu.instance",
+          "icon": "anticon anticon-police",
+          "link": "/instance/list"
+        },
+        {
+          "text": "人员检索",
+          "i18n": "menu.comparison",
+          "icon": "anticon anticon-profile",
+          "link": "/comparison"
+        },
+        {
+          "text": "系统管理",
+          "i18n": "menu.system",
+          "icon": "anticon anticon-setting",
+          "disabled": false,
+          "children": [
+            {
+              "text": "用户管理",
+              "i18n": "menu.system.user",
+              "link": "/system/user"
+            },
+            {
+              "text": "部门管理",
+              "i18n": "menu.system.department",
+              "link": "/system/equipment"
+            },
+            {
+              "text": "角色管理",
+              "i18n": "menu.system.role",
+              "link": "/system/role"
+            },
+            {
+              "text": "场所管理",
+              "i18n": "menu.system.place",
+              "link": "/system/place"
+            },
+            {
+              "text": "摄像头管理",
+              "i18n": "menu.system.camera",
+              "link": "/system/camera"
+            },
+            {
+              "text": "菜单管理",
+              "i18n": "menu.system.menu",
+              "link": "/system/menu"
+            },
+            {
+              "text": "字典管理",
+              "i18n": "menu.system.enumeration",
+              "link": "/system/enumeration"
+            },
+            {
+              "text": "日志管理",
+              "i18n": "menu.system.log",
+              "link": "/system/log"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+<page-grid>
+  <div nz-row [nzGutter]="24">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6">
+      <nz-card class="snap mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <div class="sub-card">
+          <h2 class="title">抓拍统计</h2>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+              <div class="today statistic" style="margin-bottom: 5px">
+                <div class="label">
+                  今日：
+                </div>
+                <div class="value">
+                  <span [countUp]="1856">0</span>
+                </div>
+              </div>
+            </div>
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+              <div class="total statistic" style="margin-top: 5px">
+                <div class="label">
+                  累计：
+                </div>
+                <div class="value">
+                  <span [countUp]="186954752">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">今日告警</h2>
+          <div nz-row [nzGutter]="24">
+            <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+              <instrument [num]="15"></instrument>
+              <span class="circle-label">告警场所数量</span>
+            </div>
+            <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+              <instrument [num]="37"></instrument>
+              <span class="circle-label">预警次数</span>
+            </div>
+          </div>
+          <h2 class="title">今日告警分布</h2>
+          <div nz-row [nzGutter]="24">
+            <div echarts [initOpts]="initOpts" [options]="alarmOption" [merge]="updateAlarmOption"
+                 class="alarm-container"></div>
+          </div>
+        </div>
+      </nz-card>
+      <nz-card [nzTitle]="'告警区域'" class="table mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <table>
+          <thead>
+          <tr>
+            <th width="25%">告警场所</th>
+            <th width="25%">场所编码</th>
+            <th width="15%">区域</th>
+            <th width="15%">类型</th>
+            <th width="20%">时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>登喜来</td>
+            <td>5187112</td>
+            <td>天河</td>
+            <td>涉黄</td>
+            <td>04-19</td>
+          </tr>
+          <tr>
+            <td>登喜来</td>
+            <td>5187112</td>
+            <td>天河</td>
+            <td>涉黄</td>
+            <td>04-19</td>
+          </tr>
+          <tr>
+            <td>登喜来</td>
+            <td>5187112</td>
+            <td>天河</td>
+            <td>涉黄</td>
+            <td>04-19</td>
+          </tr>
+          <tr>
+            <td>登喜来</td>
+            <td>5187112</td>
+            <td>天河</td>
+            <td>涉黄</td>
+            <td>04-19</td>
+          </tr>
+          </tbody>
+        </table>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+      <nz-card class="ant-card-charts mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <div echarts [initOpts]="initOpts" [options]="mapOptions" [merge]="updateMapOptions" [loading]="!mapLoaded" class="map-container"></div>
+      </nz-card>
+      <nz-card [nzTitle]="'从业人员分类'" class="ant-card-charts mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <div echarts [initOpts]="initOpts" [options]="passengerOption" class="passenger"></div>
+      </nz-card>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6">
+      <nz-card class="snap mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <div class="sub-card">
+          <h2 class="title">场所统计</h2>
+          <div echarts [initOpts]="initOpts" [options]="eqOptions" style="height: 233px"></div>
+          <nz-tabset>
+            <nz-tab nzTitle="场所分布">
+              <div echarts [options]="placeOption" class="place-container" style="height: 277px"></div>
+            </nz-tab>
+            <nz-tab nzTitle="摄像枪分布">
+              <div echarts [options]="placeOption" class="place-container" style="height: 277px"></div>
+            </nz-tab>
+          </nz-tabset>
+        </div>
+      </nz-card>
+      <nz-card [nzTitle]="'区域无登记人员占比'" class="table mb-lg">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+        <table>
+          <thead>
+          <tr>
+            <th width="20%">区域</th>
+            <th width="20%">从业人员</th>
+            <th width="30%">登记人员</th>
+            <th width="30%">无登记人员</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>天河</td>
+            <td>1244</td>
+            <td>3452</td>
+            <td>1531</td>
+          </tr>
+          <tr>
+            <td>天河</td>
+            <td>1244</td>
+            <td>3452</td>
+            <td>1531</td>
+          </tr>
+          <tr>
+            <td>天河</td>
+            <td>1244</td>
+            <td>3452</td>
+            <td>1531</td>
+          </tr>
+          <tr>
+            <td>天河</td>
+            <td>1244</td>
+            <td>3452</td>
+            <td>1531</td>
+          </tr>
+          </tbody>
+        </table>
+      </nz-card>
+    </div>
+  </div>
+</page-grid>
+<!--<div echarts [options]="options" class="map" [ngClass]="{'collapsed' : proSvc.collapsed}"></div>-->
+

@@ -1,0 +1,63 @@
+<page-header-wrapper [title]="'告警列表'">
+  <nz-card [nzBordered]="false" class>
+    <nz-table #nzTable [nzData]="data">
+      <thead>
+      <tr>
+        <th>
+          序号
+        </th>
+        <th>
+          姓名
+        </th>
+        <th>身份证号码</th>
+        <th>性别</th>
+        <th>告警库名称</th>
+        <th>告警时间</th>
+        <th>场所名称</th>
+        <th>抓拍时间</th>
+        <th>夜间抓拍</th>
+        <th>状态</th>
+        <th class="text-right">操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-template ngFor let-data [ngForOf]="nzTable.data" let-index="index">
+        <tr>
+          <td>{{index + 1}}</td>
+          <td>{{data.userName}}</td>
+          <td>{{data.userId}}</td>
+          <td>{{data.sex ? '男' : '女'}}</td>
+          <td>{{data.dbName}}</td>
+          <td>{{data.alarmTime}}</td>
+          <td>{{data.placeName}}</td>
+          <td>{{data.snapTime}}</td>
+          <td>是</td>
+          <td>未确认</td>
+          <td><a [routerLink]="'/alarm/item/' + data.alarmId">详情</a></td>
+          <!--          <td nzShowCheckbox [(nzChecked)]="mapOfCheckedId[data.id]" (nzCheckedChange)="refreshStatus()"></td>-->
+          <!--          <td>{{data.id}}</td>-->
+          <!--          <td>{{data.name}}</td>-->
+          <!--          <td>{{data.identification_no}}</td>-->
+          <!--          <td>{{data.native}}</td>-->
+          <!--          <td>{{data.nation}}</td>-->
+          <!--          <td>{{data.place}}</td>-->
+          <!--          <td>{{data.police_station}}</td>-->
+          <!--          <td>{{data.checkin_at | _date}}</td>-->
+          <!--          <td>{{data.register_at | _date}}</td>-->
+          <!--          <td>{{data.send_at | _date}}</td>-->
+          <!--          <td class="text-right">-->
+          <!--            <span *ngIf="!data.checkout_at">-->
+          <!--              <a [routerLink]="'/passenger/edit/' + data.id">退房</a>-->
+          <!--              <nz-divider nzType="vertical"></nz-divider>-->
+          <!--            </span>-->
+          <!--            <a [routerLink]="['/passenger/edit', data.id]">编辑</a>-->
+          <!--            <nz-divider nzType="vertical"></nz-divider>-->
+          <!--            <a>删除</a>-->
+          <!--          </td>-->
+        </tr>
+      </ng-template>
+      </tbody>
+    </nz-table>
+
+  </nz-card>
+</page-header-wrapper>
