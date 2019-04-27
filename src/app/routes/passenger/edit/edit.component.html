@@ -1,0 +1,156 @@
+<page-header-wrapper [title]="id ? '更新入住信息' : '入住登记'" [extra]="phExtra" [phContent]="phNgContent">
+  <form nz-form [formGroup]="form" (ngSubmit)="save()" class="scan sf__no-error">
+    <ng-template #phExtra class>
+      <div style="margin-top: -60px; text-align: center; width: 195px;">
+        <img *ngIf="tmpPic" class="img-fluid" src="{{tmpPic}}">
+      </div>
+    </ng-template>
+    <ng-template #phNgContent>
+      <nz-radio-group formControlName="identification_type">
+        <label nz-radio nzValue="身份证">二代身份证</label>
+        <label nz-radio nzValue="护照">国内护照</label>
+        <label nz-radio nzValue="国外护照">国外护照</label>
+        <label nz-radio nzValue="广东省居住证">广东省居住证</label>
+        <label nz-radio nzValue="港澳通行证(卡式)">港澳通行证(卡式)</label>
+        <label nz-radio nzValue="港澳通行证(本式)">港澳通行证(本式)</label>
+        <label nz-radio nzValue="港澳居民来往大陆通行证">港澳居民来往大陆通行证</label>
+        <label nz-radio nzValue="台湾居民来往大陆通行证">台湾居民来往大陆通行证</label>
+        <label nz-radio nzValue="其他">其他</label>
+      </nz-radio-group>
+      <div class="d-flex pt-md">
+        <a (click)="getData()" class="d-flex pr-lg">
+          <i style="font-size: 18px;margin-right: 8px;display: inline-block;vertical-align: middle;line-height: 24px"
+             nz-icon nzType="usb" nzTheme="outline"></i>
+          读卡登记
+        </a>
+        <a (click)="getData()" class="d-flex pr-lg">
+          <i style="font-size: 18px;margin-right: 8px;display: inline-block;vertical-align: middle;line-height: 24px"
+             nz-icon nzType="scan" nzTheme="outline"></i>
+          扫描登记
+        </a>
+        <a class="d-flex">
+          <i style="font-size: 18px;margin-right: 8px;display: inline-block;vertical-align: middle;line-height: 24px"
+             nz-icon nzType="solution" nzTheme="outline"></i>
+          电子凭证
+        </a>
+      </div>
+    </ng-template>
+    <div nz-row [nzGutter]="24">
+      <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+            <button type="button" nz-button [nzType]="'dashed'" style="width: 100%; height: 183px;margin-bottom: 16px;background: #dedede;overflow: hidden">
+              <img style="display: block;width: 100%;height: 100%;" *ngIf="scan_pic" src="{{scan_pic}}">
+              <span *ngIf="!scan_pic">扫描原图</span>
+            </button>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+            <button type="button" nz-button [nzType]="'dashed'" style="width: 100%; height: 183px;margin-bottom: 16px;background: #dedede;overflow: hidden">
+              <img style="display: block;width: 100%;height: 100%;" *ngIf="identification_pic" src="{{identification_pic}}">
+              <span *ngIf="!identification_pic">证件头像</span>
+            </button>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+            <button type="button" nz-button [nzType]="'dashed'" style="width: 100%; height: 183px;margin-bottom: 16px;overflow: hidden">
+              <img style="display: block;width: 100%;height: 100%;" *ngIf="pic" src="{{pic}}">
+              <i *ngIf="!pic" nz-icon nzType="camera" nzTheme="outline"></i>
+              <span *ngIf="!pic">现场拍照</span>
+            </button>
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24">
+
+              <nz-table #nzTable [nzData]="data" style="border: 1px solid #e8e8e8;">
+                <thead>
+                <tr>
+                  <th>类型</th>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>籍贯</th>
+                  <th>入住时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ng-template ngFor let-data [ngForOf]="nzTable.data">
+                  <tr>
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.sex}}</td>
+                    <td>{{data.native}}</td>
+                    <td>{{data.checkin_at}}</td>
+                  </tr>
+                </ng-template>
+                </tbody>
+              </nz-table>
+
+          </div>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12">
+        <nz-card nzTitle="旅客基本信息">
+          <div se-container>
+            <se label="旅客类型" required error="必填项">
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="请选择旅客类型"
+                formControlName="type">
+                <nz-option nzLabel="内地" nzValue="内地"></nz-option>
+                <nz-option nzLabel="港澳台" nzValue="港澳台"></nz-option>
+                <nz-option nzLabel="境外" nzValue="境外"></nz-option>
+              </nz-select>
+            </se>
+            <se label="名称" required error="必填项">
+              <input nz-input formControlName="name" placeholder="请输入旅客的名称" required maxlength="50">
+            </se>
+            <se label="证件类型" required>
+              <input nz-input formControlName="identification_type" placeholder="请输入旅客的证件类型" required maxlength="50">
+            </se>
+            <se label="证件号码" required>
+              <input nz-input formControlName="identification_no" placeholder="请输入旅客的证件号码" required maxlength="30">
+            </se>
+            <se label="籍贯" required>
+              <input nz-input formControlName="native" maxlength="100" placeholder="请输入旅客的籍贯" required>
+            </se>
+            <se label="民族" error="必填项" required>
+              <input nz-input formControlName="nation" maxlength="100" placeholder="请输入旅客的名族" required>
+            </se>
+          </div>
+        </nz-card>
+        <nz-card nzTitle="入住信息">
+          <div se-container>
+            <se label="入住日期" error="必填项" required>
+              <nz-date-picker nzShowTime formControlName="checkin_at" required></nz-date-picker>
+            </se>
+            <se label="退房日期" error="必填项" required>
+              <nz-date-picker nzShowTime formControlName="checkout_at" required></nz-date-picker>
+            </se>
+            <se label="入住房号" error="必填项" required style="margin-bottom: 8px">
+              <input nz-input formControlName="room" placeholder="请输入旅客的证件类型" required maxlength="50">
+            </se>
+          </div>
+          <div se-container="1">
+            <se label="备注">
+              <textarea nz-input formControlName="remark" rows="3" maxlength="200"></textarea>
+            </se>
+          </div>
+        </nz-card>
+        <nz-card nzTitle="场所信息">
+          <div se-container>
+            <se label="场所名称" error="必填项" required>
+              <input nz-input formControlName="place" disabled placeholder="请输入您的场所名称" required
+                     maxlength="50">
+            </se>
+            <se label="辖区派出所" error="必填项" required>
+              <input nz-input formControlName="police_station" disabled placeholder="请输入您的辖区派出所"
+                     required maxlength="50">
+            </se>
+          </div>
+        </nz-card>
+        <footer-toolbar>
+          <button type="submit" nz-button nzType="primary" [disabled]="form.invalid">保存</button>
+          <button type="button" nz-button (click)="cancel()">返回</button>
+        </footer-toolbar>
+      </div>
+    </div>
+  </form>
+</page-header-wrapper>

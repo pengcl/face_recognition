@@ -1,0 +1,104 @@
+@import "../../../../../styles/theme";
+
+.alarm-container {
+  padding: 16px 16px 0 16px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-clip: padding-box;
+  border: @border-width-base @border-style-base @border-color-base;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+}
+
+.passenger_img {
+  width: 300px;
+}
+
+nz-card {
+  &::ng-deep {
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+}
+
+.passenger_container {
+  position: relative;
+  overflow: hidden;
+}
+
+.passenger_img {
+  width: 300px;
+  height: 405px;
+}
+
+.scan_line {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  background-image: url('assets/images/scan_line.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  &.scan_start {
+    animation: move 1.5s ease-in-out infinite;
+  }
+}
+
+.ani_left {
+  animation: move 1.5s ease-in-out infinite;
+}
+
+.hit_rate {
+  font-size: 36px;
+  padding: 15px 0;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.scan_lately {
+  h2 {
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #d8d8d8;
+    margin: 15px 5px 10px 5px;
+    padding-bottom: 5px;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 55px;
+    margin-bottom: 10px;
+  }
+}
+
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+@keyframes move {
+  from {
+    bottom: 100%
+  }
+  to {
+    bottom: 0
+  }
+}

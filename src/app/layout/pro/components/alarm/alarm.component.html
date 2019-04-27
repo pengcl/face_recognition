@@ -1,0 +1,65 @@
+<div class="alarm-container bounceIn animated">
+  <page-grid style="width: 616px;overflow: hidden">
+    <div nz-row [nzGutter]="16">
+      <div *ngIf="scanning" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12">
+        <nz-card [nzBordered]="false">
+          <div class="passenger_container">
+            <img class="passenger_snap passenger_img" src="./assets/tmp/img/snap.jpg">
+            <div class="scan_line" [ngClass]="{'scan_start':!hit}"></div>
+          </div>
+        </nz-card>
+      </div>
+      <div [ngClass]="{'ani_left':!scanning}" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12">
+        <nz-card [nzBordered]="false">
+          <img class="passenger_passport passenger_img" [src]="target_img">
+          <div *ngIf="hit" class="hit_rate">相似度：98%</div>
+        </nz-card>
+      </div>
+      <div *ngIf="!scanning" class="fadeInRight animated" nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="12">
+        <nz-card [nzBordered]="false">
+          <ul>
+            <li>姓名：{{target.name}}</li>
+            <li>编号：{{target.no}}</li>
+            <li>性别：{{target.sex}}</li>
+            <li>籍贯：{{target.native}}</li>
+            <li>民族：{{target.nation}}</li>
+            <li style="color: #ff0000">人员库：{{target.database}}</li>
+            <li>证件类型：{{target.passport_type}}</li>
+            <li>证件号码：{{target.passport_no}}</li>
+          </ul>
+          <div class="scan_lately" nz-row [nzGutter]="10">
+            <h2>最近抓拍</h2>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/1.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/2.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/3.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/4.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/5.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/6.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/7.jpg">
+            </div>
+            <div nz-col nzXs="4" nzSm="4" nzMd="4" nzLg="4">
+              <img src="/assets/tmp/img/8.jpg">
+            </div>
+          </div>
+        </nz-card>
+      </div>
+    </div>
+  </page-grid>
+  <a (click)="close()" class="close">
+    <i nz-icon [type]="'close'"></i>
+  </a>
+</div>
+

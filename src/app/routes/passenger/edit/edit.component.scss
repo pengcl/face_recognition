@@ -1,0 +1,18 @@
+:host ::ng-deep .ant-card-meta-title {
+  margin-bottom: 12px;
+}
+.scan {
+  se {
+    &::ng-deep {
+      .se__item {
+        padding: 0;
+      }
+      .se__label {
+        width: 80px !important;
+      }
+      .ant-calendar-picker {
+        width: auto !important;
+      }
+    }
+  }
+}
